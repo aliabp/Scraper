@@ -4,7 +4,7 @@ using Scraper.api.Helper;
 
 namespace Scraper.api.Services;
 
-public class SeleniumScraperService : IDisposable
+public class SeleniumScraperService : ISeleniumScraperService
 {
     private readonly ChromeDriver _driver;
 

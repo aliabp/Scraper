@@ -20,6 +20,7 @@ builder.Services
 
 builder.Services.AddScoped<IScraperService, ScraperService>();
 builder.Services.AddScoped<IHtmlParserService, HtmlParserService>();
+builder.Services.AddScoped<ISeleniumScraperService, SeleniumScraperService>();
 
 var app = builder.Build();
 
@@ -40,3 +41,5 @@ app.Run();
 
 // close and flush log object at the end of program
 LogHelper.Instance.CloseAndFlush();
+
+public partial class Program { }

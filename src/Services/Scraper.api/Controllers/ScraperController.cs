@@ -18,6 +18,8 @@ public class ScraperController : ControllerBase
         _scraperService = scraperService;
     }
 
+    // return not found
+    //return error happend
     [HttpPost(Name = "Scraper")]
     [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
     [ProducesResponseType(((int)HttpStatusCode.BadRequest))]
@@ -25,7 +27,7 @@ public class ScraperController : ControllerBase
     {
         // check modelstate validation
         if (!ModelState.IsValid)
-            return BadRequest();
+            return BadRequest(ModelState);
         
         try
         {
