@@ -26,10 +26,7 @@ public class ScraperService : IScraperService
             string html;
         
             // get page source of scrapeUrl utilising Selenium web driver
-            using (_seleniumScraperService)
-            {
-                html = await _seleniumScraperService.GetPageSourceAsync(scrapeUrl);
-            }
+            html = await _seleniumScraperService.GetPageSourceAsync(scrapeUrl);
         
             // get a list of specific tag in page source
             var cites = _htmlParserService.GetTag(_applicationOptions.UrlHolderTagName, html);

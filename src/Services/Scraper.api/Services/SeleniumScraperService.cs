@@ -16,9 +16,16 @@ public class SeleniumScraperService : ISeleniumScraperService
         options.AddArgument("--headless");
         options.AddArgument("--disable-gpu");
 
-        // locate Chrome.exe file
-        var driverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        _driver = new ChromeDriver(driverPath, options);
+        try
+        {
+            // locate Chrome.exe file
+            var driverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            _driver = new ChromeDriver(driverPath, options);
+        }
+        catch (Exception e)
+        {
+            LogHelper.Instance.LogError($"Somthing goes wrong on web driver instantiation: {e.Message}");
+        }
     }
 
     public async Task<string> GetPageSourceAsync(string url)
@@ -32,6 +39,7 @@ public class SeleniumScraperService : ISeleniumScraperService
 
                 // Get the page source as a string
                 string pageSource = _driver.PageSource;
+                _driver.Quit();
 
                 return pageSource;
             }
@@ -43,12 +51,5 @@ public class SeleniumScraperService : ISeleniumScraperService
             }
 
         });
-    }
-
-    public void Dispose()
-    {
-        // dispose object and release unmanaged resource
-        _driver.Quit();
-        _driver.Dispose();
     }
 }
