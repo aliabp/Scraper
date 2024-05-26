@@ -4,9 +4,41 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Scraper.wpf"
+        xmlns:validation="clr-namespace:Scraper.wpf.Validation"
+        xmlns:model="clr-namespace:Scraper.wpf.Models"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <model:ScraperModel />
+    </Window.DataContext>
     <Grid>
+        <TextBox Name="txtKeywords" HorizontalAlignment="Left" Margin="147,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" Height="28">
+            <TextBox.Text>
+                <Binding Path="Keywords" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validation:KeywordsValidation />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox Name="txtUrl" HorizontalAlignment="Left" Margin="147,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" Height="28">
+            <TextBox.Text>
+                <Binding Path="Url" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validation:UrlValidation />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Content="Keywords" HorizontalAlignment="Left" Margin="66,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="Target URL" HorizontalAlignment="Left" Margin="66,150,0,0" VerticalAlignment="Top"/>
+        <Button Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="265,220,0,0" VerticalAlignment="Top" Height="34" Width="81" Click="btnSearch_Click" />
+        <TextBlock Name="txbPositions" HorizontalAlignment="Left" Margin="443,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="235" Width="234"/>
+        <TextBlock Name="txbKeywords" HorizontalAlignment="Left" Margin="84,117,0,0" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtKeywords}" VerticalAlignment="Top" Height="28" Width="262" Foreground="Red"/>
+        <TextBlock Name="txbUrl" HorizontalAlignment="Left" Margin="84,185,0,0" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtUrl}" VerticalAlignment="Top" Height="28" Width="262" Foreground="Red"/>
+        <TextBlock Name="txbError" HorizontalAlignment="Left" Margin="84,273,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="115" Width="262" Foreground="Red"/>
+
+
 
     </Grid>
 </Window>

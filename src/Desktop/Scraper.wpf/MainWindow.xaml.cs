@@ -1,24 +1,43 @@
-﻿using System.Text;
+﻿using Scraper.wpf.Models;
+using Scraper.wpf.Services;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Scraper.wpf
+namespace Scraper.wpf;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
+        InitializeComponent();
+    }
+
+    private async void btnSearch_Click(object sender, RoutedEventArgs e)
+    {
+        // create scraper model based on user input
+        ScraperModel model = new ScraperModel
         {
-            InitializeComponent();
+            Url = txtUrl.Text,
+            Keywords = txtKeywords.Text
+        };
+
+        try
+        {
+            // call scraper HTTP service 
+            var scraperService = new ScraperService();
+            string responseString = await scraperService.SendRequestToApi(model);
+            if (responseString != null)
+            {
+                // Split the responseString by comma and join with new lines
+                txbPositions.Text = $"positions which {model.Url} is found:" + Environment.NewLine + responseString;
+            }
+        }
+        catch (Exception ex)
+        {
+            // show error to user
+            txbError.Text = $"An error occurred: {ex.Message}";
         }
     }
 }
