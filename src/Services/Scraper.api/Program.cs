@@ -1,5 +1,6 @@
 using Scraper.api.Helper;
 using Scraper.api.Models;
+using Scraper.api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,9 @@ builder.Services
     .Bind(builder.Configuration.GetSection(ApplicationOptions.Key))
     .ValidateDataAnnotations()
     .ValidateOnStart();
+
+builder.Services.AddScoped<IScraperService, ScraperService>();
+builder.Services.AddScoped<IHtmlParserService, HtmlParserService>();
 
 var app = builder.Build();
 

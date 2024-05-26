@@ -13,6 +13,7 @@ public class ScraperModel
     
     // keywords for search
     [Required(ErrorMessage = "Keywords Required")]
-    [Range(3, 100, ErrorMessage = "Keywords out of range (3 - 100)")]
+    [MinLength(3)]
+    [MaxLength(100)]
     public string Keywords { get; set; }
 }
