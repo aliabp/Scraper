@@ -6,6 +6,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{4F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scraper.api", "src\Services\Scraper.api\Scraper.api.csproj", "{5BF7EF97-193A-4DE3-A7D7-6026EDB36F56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scraper.api.test", "src\Services\Scraper.api.test\Scraper.api.test.csproj", "{7C08A965-BEC7-4264-A39E-9B4C6AA5A6E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,11 +16,16 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4F50861F-5A86-46AC-B8C1-2B1585B4852D} = {0C381529-9505-47F1-A34D-44EE790FF177}
 		{5BF7EF97-193A-4DE3-A7D7-6026EDB36F56} = {4F50861F-5A86-46AC-B8C1-2B1585B4852D}
+		{7C08A965-BEC7-4264-A39E-9B4C6AA5A6E5} = {4F50861F-5A86-46AC-B8C1-2B1585B4852D}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5BF7EF97-193A-4DE3-A7D7-6026EDB36F56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5BF7EF97-193A-4DE3-A7D7-6026EDB36F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BF7EF97-193A-4DE3-A7D7-6026EDB36F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BF7EF97-193A-4DE3-A7D7-6026EDB36F56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C08A965-BEC7-4264-A39E-9B4C6AA5A6E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C08A965-BEC7-4264-A39E-9B4C6AA5A6E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C08A965-BEC7-4264-A39E-9B4C6AA5A6E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C08A965-BEC7-4264-A39E-9B4C6AA5A6E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
