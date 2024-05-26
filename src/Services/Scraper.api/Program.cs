@@ -1,3 +1,5 @@
+using Scraper.api.Helper;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -23,3 +25,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+// close and flush log object at the end of program
+LogHelper.Instance.CloseAndFlush();
