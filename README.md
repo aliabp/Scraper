@@ -1,4 +1,4 @@
-# Scraper Solution ReadMe
+# Scraper Solution
 
 ## Overview
 This repository contains a solution for scraping search results from Google. It includes three projects: a backend API for scraping, a test project for unit and integration testing, and a desktop application with a user interface to interact with the API.
@@ -28,7 +28,8 @@ POST https://yourserver/api/v1/Scraper
 ```
 
 ## Requirements
-- Chrome version 125.0.6422.78 should be installed on your host to selenium web driver perform scrapping HtML and Javascript.
+- .NET 6
+- Chrome version 125 should be installed on your host to selenium web driver perform scrapping HtML and Javascript.
 - SSL is disabled for development purposes.
 - If necessary, update the URL of the Scraper.api project in the `App.config` file of the Scraper.wpf project to match the URL and port where Scraper.api is running on your host.
 
