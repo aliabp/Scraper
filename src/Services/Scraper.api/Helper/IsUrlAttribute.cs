@@ -8,8 +8,8 @@ public class IsUrlAttribute : ValidationAttribute
     protected override ValidationResult IsValid(object value, ValidationContext validationContext)
     {
         var urlRegex = new Regex(
-            @"^(https?)" +
-            @":\/\/" +
+            @"^(https?)?" +
+            @"(:\/\/)?" +
             @"(www\.)?" +
             @"([a-zA-Z0-9\-]+\.)+" +
             "[a-zA-Z]{2,}" +

@@ -10,8 +10,8 @@ public class UrlValidation : ValidationRule
     {
         // standard URL regular expression
         var urlRegex = new Regex(
-                            @"^(https?)" +
-                            @":\/\/" +
+                            @"^(https?)?" +
+                            @"(:\/\/)?" +
                             @"(www\.)?" +
                             @"([a-zA-Z0-9\-]+\.)+" +
                             "[a-zA-Z]{2,}" +
