@@ -18,8 +18,6 @@ public class ScraperController : ControllerBase
         _scraperService = scraperService;
     }
 
-    // return not found
-    //return error happend
     [HttpPost(Name = "Scraper")]
     [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
     [ProducesResponseType(((int)HttpStatusCode.BadRequest))]
@@ -36,8 +34,11 @@ public class ScraperController : ControllerBase
             
             // scrape the URL and find the target URL in search result using scraper service class
             var positions = await _scraperService.ScrapeAndParseAsync(googleUrl, model.Url);
-        
-            return Ok(string.Join(",", positions));
+
+            if (positions.Count() > 0)
+                return Ok(string.Join(",", positions));
+            else
+                return Ok("0");
         }
         catch (Exception e)
         {

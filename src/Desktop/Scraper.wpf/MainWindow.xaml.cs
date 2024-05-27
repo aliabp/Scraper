@@ -28,10 +28,13 @@ public partial class MainWindow : Window
             // call scraper HTTP service 
             var scraperService = new ScraperService();
             string responseString = await scraperService.SendRequestToApi(model);
-            if (responseString != null)
+            if (!string.IsNullOrEmpty(responseString))
             {
                 // Split the responseString by comma and join with new lines
-                txbPositions.Text = $"positions which {model.Url} is found:" + Environment.NewLine + responseString;
+                txbPositions.Text = $"positions which {model.Url} is found:" 
+                                    + Environment.NewLine
+                                    + Environment.NewLine
+                                    + responseString;
             }
         }
         catch (Exception ex)
